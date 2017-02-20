@@ -10,7 +10,7 @@
 		38DC92701E5BA89500AAF84C /* Mercury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC92661E5BA89500AAF84C /* Mercury.framework */; };
 		38DC92751E5BA89500AAF84C /* MercuryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC92741E5BA89500AAF84C /* MercuryTests.swift */; };
 		38DC92771E5BA89600AAF84C /* Mercury.h in Headers */ = {isa = PBXBuildFile; fileRef = 38DC92691E5BA89500AAF84C /* Mercury.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38DC92851E5BAB6400AAF84C /* Mercury.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC92841E5BAB6400AAF84C /* Mercury.swift */; };
+		38DC92851E5BAB6400AAF84C /* MercuryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC92841E5BAB6400AAF84C /* MercuryAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 		38DC926F1E5BA89500AAF84C /* MercuryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercuryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DC92741E5BA89500AAF84C /* MercuryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryTests.swift; sourceTree = "<group>"; };
 		38DC92761E5BA89500AAF84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38DC92841E5BAB6400AAF84C /* Mercury.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mercury.swift; sourceTree = "<group>"; };
+		38DC92841E5BAB6400AAF84C /* MercuryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MercuryAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 		38DC92831E5BAB6400AAF84C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				38DC92841E5BAB6400AAF84C /* Mercury.swift */,
+				38DC92841E5BAB6400AAF84C /* MercuryAPI.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38DC92851E5BAB6400AAF84C /* Mercury.swift in Sources */,
+				38DC92851E5BAB6400AAF84C /* MercuryAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

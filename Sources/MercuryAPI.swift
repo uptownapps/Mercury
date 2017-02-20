@@ -30,7 +30,7 @@
 
 import Foundation
 
-public protocol Mercury {
+public protocol MercuryAPI {
     associatedtype EndpointType: EndpointConvertible
     associatedtype ErrorType: SwiftErrorConvertible
     associatedtype TransformType: DataTransformable
@@ -58,7 +58,7 @@ public protocol SwiftErrorConvertible: Swift.Error {
 
 // MARK: - Default Implementation
 
-extension Mercury {
+extension MercuryAPI {
     public static func customize(request: Request) {}
 }
 
@@ -66,7 +66,7 @@ extension Mercury {
 
 public typealias Request = NSMutableURLRequest
 
-extension Mercury {
+extension MercuryAPI {
     public static func createRequest(endpoint: EndpointType, queryParameters parameters: [String : String] = [:]) -> Request {
         let url = baseURL.appendingPathComponent(endpoint.path)
         let requestURL = URLComponents(fullURL: url, parameters: parameters)!.url
@@ -117,7 +117,7 @@ extension Request {
 
 // MARK: - Fetch the Request
 
-extension Mercury {
+extension MercuryAPI {
     @discardableResult
     public static func fetch(_ request: Request, completion: @escaping (TransformType?, ErrorType?) -> Void) -> URLSessionDataTask {
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in

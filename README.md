@@ -29,7 +29,7 @@ struct MyAPI {
 // The `customize` function allows you to makes changes to every request as it's created. This is useful for adding headers,
 // common query parameters, etc.
 
-extension MyAPI: Mercury {
+extension MyAPI: MercuryAPI {
 	typealias EndpointType = MyEndpoint
     typealias ErrorType = Error
     typealias TransformType = Dictionary<String, Any>
