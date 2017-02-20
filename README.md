@@ -66,7 +66,7 @@ extension MyAPI {
 	@discardableResult
 	func fetchAll(completion: @escaping ([String: Any]?, Error?) -> Void) -> URLSessionDataTask {
 		let request = createRequest(endpoint: .fetchAll)
-		fetch(request) { result, error in
+		return fetch(request) { result, error in
 			completion(result, error)
 		}
 	}
@@ -84,7 +84,7 @@ extension MyAPI {
 			.setAuthorization("Bearer xyz") // Convenince function for setting "Authorization" header
 			.setBody(_) // Useful for setting POST bodies. Can accept Data, [String: Any], [[String: Any]], or nil
 
-		fetch(request) { result, error in
+		return fetch(request) { result, error in
 			// ...
 			completion()
 		}
