@@ -63,6 +63,7 @@ enum MyEndpoint: EndpointConvertible {
 // MARK: - MyAPI 
 
 extension MyAPI {
+	@discardableResult
 	func fetchAll(completion: @escaping ([String: Any]?, Error?) -> Void) -> URLSessionDataTask {
 		let request = createRequest(endpoint: .fetchAll)
 		fetch(request) { result, error in
@@ -75,6 +76,7 @@ extension MyAPI {
 	// parameters, the first being the result matching the `TransformType`, and the second being any errors
 	// matching the `ErrorType` defined above.
 
+	@discardableResult
 	func search(_ term: String, completion: @escaping () -> Void) -> URLSessionDataTask {
 		let requeset = createRequest(endpoint: .search(term), parameters: ["limit": "10"])
 			.setMethod(.get) // This is the default
@@ -95,9 +97,10 @@ class MyViewController: UIViewController {
 	// ...
 
 	var results: [String: Any] = [:]
+	weak var searchTask: URLSessionDataTask?
 
 	func fetchAll() {
-		MyAPI.fetchAll { [weak self] result, error in
+		fetchTask = MyAPI.fetchAll { [weak self] result, error in
 
 			DispatchQueue.main.async {
 				if let error = error {
@@ -112,7 +115,10 @@ class MyViewController: UIViewController {
 	}
 
 	func search(query: String) {
-		MyAPI.search(query) {
+		// Cancel previous search if it's still running.
+		searchTask?.cancel()
+
+		searchTask = MyAPI.search(query) {
 			// ...
 		}
 	}
