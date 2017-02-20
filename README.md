@@ -63,16 +63,10 @@ enum MyEndpoint: EndpointConvertible {
 // MARK: - MyAPI 
 
 extension MyAPI {
-	func fetchAll(completion: ([String: Any]?, Error?)) -> URLSessionDataTask {
+	func fetchAll(completion: @escaping ([String: Any]?, Error?) -> Void) -> URLSessionDataTask {
 		let request = createRequest(endpoint: .fetchAll)
 		fetch(request) { result, error in
-			if let result = result {
-				print("Fetch All Response: ", result)
-			} else if let error = error {
-				print("Fetch All Error: ", error)
-			} else {
-				print("Fetch All Unknown Error")
-			}
+			completion(result, error)
 		}
 	}
 
@@ -81,7 +75,7 @@ extension MyAPI {
 	// parameters, the first being the result matching the `TransformType`, and the second being any errors
 	// matching the `ErrorType` defined above.
 
-	func search(_ term: String, completion: ([String: Any]?, Error?)) -> URLSessionDataTask {
+	func search(_ term: String, completion: @escaping () -> Void) -> URLSessionDataTask {
 		let requeset = createRequest(endpoint: .search(term), parameters: ["limit": "10"])
 			.setMethod(.get) // This is the default
 			.setHeaderValue("", forField: "") // Function for setting header fields
@@ -90,8 +84,39 @@ extension MyAPI {
 
 		fetch(request) { result, error in
 			// ...
+			completion()
 		}
 	} 
 }
+
+// MARK: View Controller
+
+class MyViewController: UIViewController {
+	// ...
+
+	var results: [String: Any] = [:]
+
+	func fetchAll() {
+		MyAPI.fetchAll { [weak self] result, error in
+
+			DispatchQueue.main.async {
+				if let error = error {
+					// TODO: Handle Error
+				} else {
+					self?.results = result
+					self?.refreshUI()
+				}
+			}
+			
+		}
+	}
+
+	func search(query: String) {
+		MyAPI.search(query) {
+			// ...
+		}
+	}
+}
+
 ```
 
