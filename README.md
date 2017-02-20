@@ -1,7 +1,20 @@
 # Mercury
 Mercury, named for the Patron God of Communication, is a simple framework written in Swift 3.0 designed to help you eloquently develop your API communication layer.
 
-# Example
+# Installation
+## Carthage
+
+Add the following to your `Cartfile`.
+
+```ogdl
+github "uptownapps/Mercury"
+```
+
+Then, run `carthage update`, and add the resulting framework from
+`Carthage/Build` into your project's "Linked Frameworks and Libraries" setting
+within Xcode.
+
+# Example Implementation
 ```swift
 
 // The struct holds the values related to the API environment. This could be URLs,
