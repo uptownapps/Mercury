@@ -100,7 +100,7 @@ class MyViewController: UIViewController {
 	weak var searchTask: URLSessionDataTask?
 
 	func fetchAll() {
-		fetchTask = MyAPI.fetchAll { [weak self] result, error in
+		MyAPI.fetchAll { [weak self] result, error in
 
 			DispatchQueue.main.async {
 				if let error = error {
