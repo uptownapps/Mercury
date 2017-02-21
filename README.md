@@ -1,5 +1,10 @@
 # Mercury
-Mercury, named for the Patron God of Communication, is a simple framework written in Swift 3.0 designed to help you eloquently develop your API communication layer.
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Platform](https://img.shields.io/badge/platform-iOS-lightgray.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+Mercury, named for the Roman Patron God of Communication, is a simple framework written in Swift 3 designed to help you eloquently develop your API communication layer.
 
 # Installation
 ## Carthage
